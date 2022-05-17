@@ -16,7 +16,7 @@ class LinkedList{
         Node p1 = new Node(1);
         Node root = p1;
         int i = 2;
-        while(i != 10) {
+        while(i != 11) {
             Node p2 = new Node(i);
             p1.next = p2;
             p1=p2;
@@ -30,22 +30,21 @@ public class ReverseLL {
 
     public static void reverse(){
         Node root = LinkedList.buildLL();
-        Node p = root;
-        Node q = root.next;
-        Node r = null;
-
-        while(p.next !=null){
-            p.next = r;
-            r = p;
-            p = q;
-            q = p.next;
+        Node current = root;
+        Node next;
+        Node prev = null;
+        while(current != null){
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
         }
 
-        p.next = r;
+        root = prev;
 
-        while(p.next != null){
-            System.out.println(p.data);
-            p = p.next;
+        while(root.next != null){
+            System.out.println(root.data);
+            root = root.next;
         }
     }
 }

@@ -1,11 +1,6 @@
 package com.home;
 
-import com.home.extras.turing1;
-import com.home.extras.turing2;
-import com.home.queue.NonRepeatingChar;
-import com.home.trees.*;
-
-import java.util.*;
+import com.home.trees.tree1;
 
 public class Main {
 
@@ -25,9 +20,42 @@ public class Main {
 //        boolean res1 = obj2.isValid("[{()}]");
 //        System.out.println(res);
 //        System.out.println(res1);
-        Character[] ch = {'a','b','c','b','a','c','d'};
-        Character[] ch1 = {'a','b','a','a','b','b','c'};
-        NonRepeatingChar.compute(ch1);
+//        Character[] ch = {'a','b','c','b','a','c','d'};
+//        Character[] ch1 = {'a','b','a','a','b','b','c'};
+//        NonRepeatingChar.compute(ch1);
+//        Integer[] arr = {10,9,8,7,6,5,4,3,2,1};
+//        Integer[] arr1 = {1,3,2,5,7,6};
+//        ArrayList<Integer> result = MaxElementInWindow.compute(arr1,3);
+//        for(Integer x: result)
+//            System.out.print(x+" ");
 
+//        String result = null;
+//        String str = "ab-cd";
+//        char[] str1 = str.toCharArray();
+//
+//        int r = str1.length - 1;
+//        int l = 0;
+//        while(l < r){
+//            if(!Character.isAlphabetic(str1[l]))
+//                l++;
+//            else if(!Character.isAlphabetic(str1[r]))
+//                r--;
+//            else{
+//                char temp = str1[l];
+//                str1[l] = str1[r];
+//                str1[r] = temp;
+//                l++;
+//                r--;
+//            }
+//        }
+//
+//        result = new String(str1);
+//        System.out.println(result);
+//        int[] arr = {5,20,110,100,10};
+//        int k = 85;
+//        int result = PairLargestSumLessThanK.compute(arr,k);
+//        System.out.println(result);
+
+        tree1.compute();
     }
 }
