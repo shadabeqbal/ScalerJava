@@ -37,22 +37,6 @@ public class tree1 {
         preorder(root.right);
     }
 
-    public static void preorder_iterative(TreeNode root){
-        Stack<TreeNode> st = new Stack<>();
-        st.push(root);
-        TreeNode ptr = root;
-        while(ptr != null || !st.empty()){
-            if(ptr != null){
-                System.out.println(ptr.data);
-                st.push(ptr.left);
-                ptr = ptr.left;
-            }else{
-                ptr = st.peek();
-                st.pop();
-            }
-        }
-    }
-
     public static void inorder(TreeNode root){
         if(root == null)
             return;
@@ -132,6 +116,7 @@ public class tree1 {
         verticalOrder(n1.right,currLevel+1,hm);
 
     }
+
     public static boolean isMirror(TreeNode n1, TreeNode n2){
         if(n1 == null && n2 == null)
             return true;
@@ -219,9 +204,6 @@ public class tree1 {
         System.out.print("Preorder: ");
         preorder(root);
         System.out.println();
-        System.out.print("Preorder_Iterative: ");
-        preorder_iterative(root);
-        System.out.println();
         System.out.print("Inorder: ");
         inorder(root);
         System.out.println();
@@ -272,6 +254,7 @@ public class tree1 {
         System.out.println();
         System.out.print("Postorder: ");
         postorder(root6);
+
 
 
     }
