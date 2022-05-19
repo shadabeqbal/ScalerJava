@@ -1,8 +1,5 @@
 package com.home.trees;
 
-import apple.laf.JRSUIUtils;
-import sun.lwawt.macosx.CSystemTray;
-
 import java.util.*;
 
 class TreeNode {
@@ -39,6 +36,7 @@ public class tree1 {
         preorder(root.left);
         preorder(root.right);
     }
+
     public static void preorder_iterative(TreeNode root){
         Stack<TreeNode> st = new Stack<>();
         st.push(root);
@@ -53,7 +51,6 @@ public class tree1 {
                 st.pop();
             }
         }
-
     }
 
     public static void inorder(TreeNode root){
@@ -152,15 +149,72 @@ public class tree1 {
 
         return true;
     }
+    
+    public static boolean isHeightBalanced(TreeNode root){
+        if(root == null)
+            return false;
+
+        if (Math.abs(heightoftree(root.left) - heightoftree(root.right)) <= 1)
+            return true;
+
+        return false;
+    }
+
+    public static boolean isBinaryTree(TreeNode root){
+        if(root == null)
+            return true;
+
+        if(root.left != null && root.left.data > root.data)
+            return false;
+
+        if(root.right != null && root.right.data < root.data)
+            return false;
+
+        isBinaryTree(root.left);
+        isBinaryTree(root.right);
+
+        return true;
+    }
+    public static TreeNode buildBST(Integer[] arr){
+        TreeNode root = null;
+        for(int i=0;i<arr.length;i++)
+            root = buildBSTHelper(root,arr[i]);
+
+        return root;
+
+    }
+    public static TreeNode buildBSTHelper(TreeNode root,int i){
+
+        if(root == null)
+            root = new TreeNode(i);
+        else if(i <= root.data)
+            root.left = buildBSTHelper(root.left,i);
+        else
+            root.right = buildBSTHelper(root.right,i);
+
+        return root;
+    }
 
     public static void compute() {
         Integer[] arr = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
         Integer[] arr1 = {1,3,6,-1,-1,-1,2,5,-1,-1,4,-1,-1};
-        TreeNode root = null;
-        TreeNode root2 = null;
+        Integer[] arr2 = {1,2,-1,-1,3,5,6,-1,-1,7,-1,-1,4,-1,-1};
+        Integer[] arr3 = {10,8,-1,-1,19,17,-1,-1,21,-1,-1};
+        Integer[] arr4 = {50,46,20,18,-1,-1,-1,48,-1,49,-1,-1,100,61,-1,-1,180,-1,-1};
+        TreeNode root;
+        TreeNode root2;
+        TreeNode root3;
+        TreeNode root4;
+        TreeNode root5;
         root = buildTree(arr);
         i = -1;
         root2 = buildTree(arr1);
+        i = -1;
+        root3 = buildTree(arr2);
+        i = -1;
+        root4 = buildTree(arr3);
+        i = -1;
+        root5 = buildTree(arr4);
         System.out.println(root.data);
         System.out.print("Preorder: ");
         preorder(root);
@@ -188,7 +242,7 @@ public class tree1 {
         System.out.println(isMirror(root,root2));
         System.out.print("VerticalOrder: ");
         HashMap<Integer,List<TreeNode>> hm = new HashMap<>();
-        verticalOrder(root,0,hm);
+        verticalOrder(root3,0,hm);
         for(Map.Entry<Integer,List<TreeNode>> each: hm.entrySet()){
             System.out.print("[");
             for(TreeNode eachNode: each.getValue()){
@@ -199,5 +253,26 @@ public class tree1 {
 
             System.out.print("],");
         }
+        System.out.println();
+        System.out.print("Height Balanced: ");
+        System.out.print(isHeightBalanced(root3));
+        System.out.println();
+        System.out.println("Is Binary Tree: "+isBinaryTree(root5));
+
+        Integer[] arr5 = {8,2,9,6,5,7};
+        TreeNode root6;
+        root6 = buildBST(arr5);
+
+        System.out.println("Is Binary Tree: "+isBinaryTree(root6));
+        System.out.print("Preorder: ");
+        preorder(root6);
+        System.out.println();
+        System.out.print("Inorder: ");
+        inorder(root6);
+        System.out.println();
+        System.out.print("Postorder: ");
+        postorder(root6);
+
+
     }
 }
