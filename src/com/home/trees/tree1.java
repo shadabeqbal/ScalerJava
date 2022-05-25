@@ -180,6 +180,23 @@ public class tree1 {
         return root;
     }
 
+    public static Integer ancestorList(TreeNode root,HashMap<Integer,List<Integer>> hm){
+        if(root.left == null || root.right == null)
+            return root.data;
+
+        if(!hm.containsKey(root.data))
+            hm.put(root.data,new ArrayList<>());
+
+        hm.get(root.data).add(ancestorList(root.left,hm));
+        hm.get(root.data).add(ancestorList(root.right,hm));
+
+        return root.data;
+    }
+    public static void lca(TreeNode root,TreeNode n1,TreeNode n2){
+        HashMap<Integer,List<Integer>> hm = new HashMap<>();
+        int x = ancestorList(root,hm);
+        System.out.println(hm);
+    }
     public static void compute() {
         Integer[] arr = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
         Integer[] arr1 = {1,3,6,-1,-1,-1,2,5,-1,-1,4,-1,-1};
@@ -255,6 +272,9 @@ public class tree1 {
         System.out.print("Postorder: ");
         postorder(root6);
 
+        TreeNode n1 = new TreeNode(5);
+        TreeNode n2 = new TreeNode(7);
+        lca(root6,n1,n2);
 
 
     }

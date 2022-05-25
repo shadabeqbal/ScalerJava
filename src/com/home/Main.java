@@ -1,6 +1,7 @@
 package com.home;
 
 import com.home.trees.tree1;
+import com.home.tries.tries;
 
 public class Main {
 
@@ -56,6 +57,6 @@ public class Main {
 //        int result = PairLargestSumLessThanK.compute(arr,k);
 //        System.out.println(result);
 
-        tree1.compute();
+        tries.compute();
     }
 }
