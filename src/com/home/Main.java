@@ -1,5 +1,9 @@
 package com.home;
 
+import com.home.dp.dp1;
+import com.home.extras.problemSet1;
+import com.home.linkedlist.ReverseLL;
+import com.home.test.test;
 import com.home.trees.tree1;
 import com.home.tries.tries;
 
@@ -57,6 +61,10 @@ public class Main {
 //        int result = PairLargestSumLessThanK.compute(arr,k);
 //        System.out.println(result);
 
-        tries.compute();
+//        tries.compute();
+//        dp1.compute();
+//        Integer[] arr = {-2,0,10,-19,4,6,-8};
+//        System.out.println(problemSet1.compute(arr));
+        dp1.compute();
     }
 }
